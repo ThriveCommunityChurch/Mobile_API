@@ -9,12 +9,19 @@ using System.Collections.Generic;
 
 namespace ThriveChurchOfficialAPI.Repositories
 {
+    /// <summary>
+    /// Sermons Repo
+    /// </summary>
     public class SermonsRepository : RepositoryBase, ISermonsRepository
     {
         private readonly IMongoDatabase db;
 
-        public SermonsRepository(IConfiguration Configuration)
-            : base(Configuration)
+        /// <summary>
+        /// Sermons Repo C'tor
+        /// </summary>
+        /// <param name="Configuration"></param>
+        public SermonsRepository(IConfiguration Configuration, ITokenRepo tokenRepo)
+            : base(Configuration, tokenRepo)
         {
             db = Client.GetDatabase("SermonSeries");
         }

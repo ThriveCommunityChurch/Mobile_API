@@ -102,6 +102,8 @@ namespace ThriveChurchOfficialAPI.Services
 
                         builder = new StringBuilder();
                         break;
+                    default:
+                        break;
                 }
 
                 if (opened && !firstChar)
@@ -113,7 +115,7 @@ namespace ThriveChurchOfficialAPI.Services
             var response = passage;
             foreach (var footnoteTag in footerNumberList)
             {
-                response = passage.Replace(string.Format("({0})", footnoteTag), "");
+                response = response.Replace(string.Format("({0})", footnoteTag), "");
             }
 
             foreach (var verseNumberText in verseNumberList)
@@ -121,7 +123,7 @@ namespace ThriveChurchOfficialAPI.Services
                 string superscript = new string(verseNumberText.Select(i => SuperscriptDigits[i - '0']).ToArray());
 
                 // replace the numbers here with the uincode strings we found above, but add a space at the end
-                response = passage.Replace(string.Format("[{0}] ", verseNumberText), superscript + " ");
+                response = response.Replace(string.Format("[{0}] ", verseNumberText), superscript + " ");
             }
 
             return response;
