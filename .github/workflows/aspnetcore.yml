@@ -3,13 +3,13 @@ name: ASP.NET Core CI
 on: 
   push:
     branches:
-    - master
+    - dev
   
 
 jobs:
   build:
 
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     
     steps:
     - uses: actions/checkout@v1
